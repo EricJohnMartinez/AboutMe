@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const AboutMe_Martinez());
@@ -12,8 +13,160 @@ class AboutMe_Martinez extends StatelessWidget {
     return MaterialApp(
       title: 'Eric John C. Martinez - About Me',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+        // Modern aesthetic color scheme - Purple to Pink gradient theme
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF6366F1), // Indigo
+          brightness: Brightness.light,
+          primary: const Color(0xFF6366F1), // Indigo-500
+          secondary: const Color(0xFFEC4899), // Pink-500
+          tertiary: const Color(0xFF8B5CF6), // Violet-500
+          surface: const Color(0xFFF8FAFC), // Slate-50
+          background: const Color(0xFFFFFFFF), // White
+          onPrimary: Colors.white,
+          onSecondary: Colors.white,
+          onSurface: const Color(0xFF1E293B), // Slate-800
+          onBackground: const Color(0xFF334155), // Slate-700
+          error: const Color(0xFFEF4444), // Red-500
+          onError: Colors.white,
+        ),
         useMaterial3: true,
+        
+        // Custom text theme with Raleway
+        textTheme: GoogleFonts.ralewayTextTheme(
+          TextTheme(
+            displayLarge: GoogleFonts.raleway(
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+              color: const Color(0xFF6366F1),
+              letterSpacing: 1.2,
+            ),
+            displayMedium: GoogleFonts.raleway(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              color: const Color(0xFF6366F1),
+              letterSpacing: 1.0,
+            ),
+            headlineLarge: GoogleFonts.raleway(
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+              color: const Color(0xFF4338CA), // Indigo-700
+            ),
+            headlineMedium: GoogleFonts.raleway(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+              color: const Color(0xFF4338CA),
+            ),
+            titleLarge: GoogleFonts.raleway(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: const Color(0xFF1E293B),
+            ),
+            titleMedium: GoogleFonts.raleway(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: const Color(0xFF334155),
+            ),
+            bodyLarge: GoogleFonts.raleway(
+              fontSize: 16,
+              fontWeight: FontWeight.normal,
+              height: 1.5,
+              color: const Color(0xFF475569), // Slate-600
+            ),
+            bodyMedium: GoogleFonts.raleway(
+              fontSize: 14,
+              fontWeight: FontWeight.normal,
+              height: 1.4,
+              color: const Color(0xFF64748B), // Slate-500
+            ),
+            labelLarge: GoogleFonts.raleway(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+        
+        // AppBar theme with gradient
+        appBarTheme: AppBarTheme(
+          backgroundColor: const Color(0xFF6366F1),
+          foregroundColor: Colors.white,
+          elevation: 0,
+          centerTitle: false,
+          titleTextStyle: GoogleFonts.raleway(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
+        ),
+        
+        // Card theme with subtle shadows
+        cardTheme: CardThemeData(
+          elevation: 6,
+          margin: const EdgeInsets.symmetric(vertical: 8),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          color: Colors.white,
+          shadowColor: const Color(0xFF6366F1).withOpacity(0.1),
+        ),
+        
+        // Elevated button theme with gradient colors
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFF6366F1),
+            foregroundColor: Colors.white,
+            elevation: 4,
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            textStyle: GoogleFonts.raleway(
+              fontWeight: FontWeight.w600,
+              fontSize: 14,
+            ),
+          ),
+        ),
+        
+        // FloatingActionButton theme
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: Color(0xFFEC4899), // Pink accent
+          foregroundColor: Colors.white,
+          elevation: 8,
+        ),
+        
+        // Bottom navigation bar theme
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          selectedItemColor: const Color(0xFF6366F1),
+          unselectedItemColor: const Color(0xFF94A3B8), // Slate-400
+          selectedLabelStyle: GoogleFonts.raleway(
+            fontWeight: FontWeight.w600,
+            fontSize: 12,
+          ),
+          unselectedLabelStyle: GoogleFonts.raleway(
+            fontWeight: FontWeight.normal,
+            fontSize: 12,
+          ),
+          backgroundColor: Colors.white,
+          elevation: 8,
+        ),
+        
+        // Drawer theme
+        drawerTheme: const DrawerThemeData(
+          backgroundColor: Colors.white,
+          elevation: 12,
+        ),
+        
+        // Input decoration theme
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: Color(0xFF6366F1)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: Color(0xFF6366F1), width: 2),
+          ),
+          labelStyle: GoogleFonts.raleway(color: const Color(0xFF6366F1)),
+        ),
       ),
       home: const AboutMePage(),
     );
@@ -43,38 +196,89 @@ class _AboutMePageState extends State<AboutMePage> {
     });
   }
 
+  // Custom page transition animation
+  Widget _buildAnimatedPageTransition(Widget child) {
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 300),
+      transitionBuilder: (Widget child, Animation<double> animation) {
+        return SlideTransition(
+          position: Tween<Offset>(
+            begin: const Offset(1.0, 0.0),
+            end: Offset.zero,
+          ).animate(CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeInOut,
+          )),
+          child: FadeTransition(
+            opacity: animation,
+            child: child,
+          ),
+        );
+      },
+      child: child,
+    );
+  }
+
+  // Staggered animation for cards
+  Widget _buildAnimatedCard({
+    required Widget child,
+    required int index,
+  }) {
+    return TweenAnimationBuilder<double>(
+      duration: Duration(milliseconds: 300 + (index * 100)),
+      tween: Tween(begin: 0.0, end: 1.0),
+      builder: (context, value, child) {
+        return Transform.translate(
+          offset: Offset(0, 50 * (1 - value)),
+          child: Opacity(
+            opacity: value,
+            child: child,
+          ),
+        );
+      },
+      child: child,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(_getAppBarTitle()),
         backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Colors.white,
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
         elevation: 2,
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
+            DrawerHeader(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Colors.teal, Colors.tealAccent],
+                  colors: [
+                    Color(0xFF6366F1), // Indigo-500
+                    Color(0xFF8B5CF6), // Violet-500
+                    Color(0xFFEC4899), // Pink-500
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                 ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius: 30,
                     backgroundImage: AssetImage('assets/images/profile.JPG'),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
                     'Navigation',
-                    style: TextStyle(
+                    style: GoogleFonts.raleway(
                       color: Colors.white,
                       fontSize: 24,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ],
@@ -82,7 +286,10 @@ class _AboutMePageState extends State<AboutMePage> {
             ),
             ListTile(
               leading: const Icon(Icons.home),
-              title: const Text('Home'),
+              title: Text(
+                'Home',
+                style: GoogleFonts.raleway(fontWeight: FontWeight.w500),
+              ),
               onTap: () {
                 Navigator.pop(context);
                 _onNavigationTapped(0);
@@ -90,7 +297,10 @@ class _AboutMePageState extends State<AboutMePage> {
             ),
             ListTile(
               leading: const Icon(Icons.person),
-              title: const Text('About Me'),
+              title: Text(
+                'About Me',
+                style: GoogleFonts.raleway(fontWeight: FontWeight.w500),
+              ),
               onTap: () {
                 Navigator.pop(context);
                 _onNavigationTapped(1);
@@ -98,7 +308,10 @@ class _AboutMePageState extends State<AboutMePage> {
             ),
             ListTile(
               leading: const Icon(Icons.contact_mail),
-              title: const Text('Contact'),
+              title: Text(
+                'Contact',
+                style: GoogleFonts.raleway(fontWeight: FontWeight.w500),
+              ),
               onTap: () {
                 Navigator.pop(context);
                 _onNavigationTapped(2);
@@ -107,7 +320,7 @@ class _AboutMePageState extends State<AboutMePage> {
           ],
         ),
       ),
-      body: _getBodyContent(),
+      body: _buildAnimatedPageTransition(_getBodyContent()),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
@@ -123,21 +336,21 @@ class _AboutMePageState extends State<AboutMePage> {
             label: 'Contact',
           ),
         ],
-        selectedItemColor: Colors.teal,
+        selectedItemColor: Theme.of(context).colorScheme.primary,
         currentIndex: _currentIndex,
         onTap: _onNavigationTapped,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Thanks for viewing my profile!'),
-              backgroundColor: Colors.teal,
+            SnackBar(
+              content: const Text('Thanks for viewing my profile!'),
+              backgroundColor: Theme.of(context).colorScheme.primary,
             ),
           );
         },
-        backgroundColor: Colors.teal,
-        child: const Icon(Icons.favorite, color: Colors.white),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        child: Icon(Icons.favorite, color: Theme.of(context).colorScheme.onPrimary),
       ),
     );
   }
@@ -158,13 +371,25 @@ class _AboutMePageState extends State<AboutMePage> {
   Widget _getBodyContent() {
     switch (_currentIndex) {
       case 0:
-        return _buildHomePage();
+        return Container(
+          key: const ValueKey('home'),
+          child: _buildHomePage(),
+        );
       case 1:
-        return _buildAboutPage();
+        return Container(
+          key: const ValueKey('about'),
+          child: _buildAboutPage(),
+        );
       case 2:
-        return _buildContactPage();
+        return Container(
+          key: const ValueKey('contact'),
+          child: _buildContactPage(),
+        );
       default:
-        return _buildHomePage();
+        return Container(
+          key: const ValueKey('home'),
+          child: _buildHomePage(),
+        );
     }
   }
 
@@ -199,21 +424,23 @@ class _AboutMePageState extends State<AboutMePage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Text(
+                Text(
                   'Eric John C. Martinez',
-                  style: TextStyle(
+                  style: GoogleFonts.raleway(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
-                    color: Colors.teal,
+                    color: const Color(0xFF6366F1), // Updated to new primary color
+                    letterSpacing: 1.2,
                   ),
                 ),
                 const SizedBox(height: 10),
-                const Text(
+                Text(
                   'Software Engineer',
-                  style: TextStyle(
+                  style: GoogleFonts.raleway(
                     fontSize: 16,
-                    color: Colors.grey,
+                    color: const Color(0xFF64748B), // Updated to slate-500
                     fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ],
@@ -223,43 +450,55 @@ class _AboutMePageState extends State<AboutMePage> {
           const SizedBox(height: 20),
 
           // Welcome Card
-          Card(
-            elevation: 4,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  const Row(
-                    children: [
-                      Icon(Icons.waving_hand, color: Colors.teal),
-                      SizedBox(width: 8),
-                      Text(
-                        'Welcome to My Profile!',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+          _buildAnimatedCard(
+            index: 0,
+            child: Card(
+              elevation: 4,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(Icons.waving_hand, color: Color(0xFFEC4899)), // Pink accent
+                        const SizedBox(width: 8),
+                        Text(
+                          'Welcome to My Profile!',
+                          style: GoogleFonts.raleway(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFF6366F1), // Primary color
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Hello! I\'m Eric John, a passionate Software Engineer and Information Technology Graduate. I love creating beautiful web and mobile applications and exploring new technologies.',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.raleway(
+                        fontSize: 16,
+                        height: 1.5,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    ElevatedButton.icon(
+                      onPressed: () => _onNavigationTapped(1),
+                      icon: const Icon(Icons.arrow_forward),
+                      label: Text(
+                        'Learn More About Me',
+                        style: GoogleFonts.raleway(
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  const Text(
-                    'Hello! I\'m Eric John, a passionate Software Engineer and Information Technology Graduate. I love creating beautiful web and mobile applications and exploring new technologies.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  const SizedBox(height: 16),
-                  ElevatedButton.icon(
-                    onPressed: () => _onNavigationTapped(1),
-                    icon: const Icon(Icons.arrow_forward),
-                    label: const Text('Learn More About Me'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.teal,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.teal,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -267,35 +506,39 @@ class _AboutMePageState extends State<AboutMePage> {
           const SizedBox(height: 20),
 
           // Quick Stats Card
-          Card(
-            elevation: 4,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  const Row(
-                    children: [
-                      Icon(Icons.analytics, color: Colors.teal),
-                      SizedBox(width: 8),
-                      Text(
-                        'Quick Stats',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+          _buildAnimatedCard(
+            index: 1,
+            child: Card(
+              elevation: 4,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(Icons.analytics, color: Color(0xFF8B5CF6)), // Violet accent
+                        const SizedBox(width: 8),
+                        Text(
+                          'Quick Stats',
+                          style: GoogleFonts.raleway(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: const Color(0xFF6366F1),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      _buildStatItem('27', 'Years Old'),
-                      _buildStatItem('IT', 'Student'),
-                      _buildStatItem('Web/Mobile', 'Developer'),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _buildStatItem('27', 'Years Old'),
+                        _buildStatItem('IT', 'Student'),
+                        _buildStatItem('Web/Mobile', 'Developer'),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -318,15 +561,16 @@ class _AboutMePageState extends State<AboutMePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(Icons.info, color: Colors.teal),
-                      SizedBox(width: 8),
+                      const Icon(Icons.info, color: Color(0xFF6366F1)),
+                      const SizedBox(width: 8),
                       Text(
                         'Personal Information',
-                        style: TextStyle(
+                        style: GoogleFonts.raleway(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          color: const Color(0xFF6366F1),
                         ),
                       ),
                     ],
@@ -350,15 +594,16 @@ class _AboutMePageState extends State<AboutMePage> {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(Icons.touch_app, color: Colors.teal),
-                      SizedBox(width: 8),
+                      const Icon(Icons.touch_app, color: Color(0xFFEC4899)), // Pink
+                      const SizedBox(width: 8),
                       Text(
                         'Get to Know Me Better',
-                        style: TextStyle(
+                        style: GoogleFonts.raleway(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          color: const Color(0xFF6366F1),
                         ),
                       ),
                     ],
@@ -379,24 +624,38 @@ class _AboutMePageState extends State<AboutMePage> {
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: Colors.teal.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(8),
+                        gradient: LinearGradient(
+                          colors: [
+                            const Color(0xFF6366F1).withOpacity(0.1),
+                            const Color(0xFFEC4899).withOpacity(0.1),
+                          ],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: const Color(0xFF6366F1).withOpacity(0.3),
+                          width: 1,
+                        ),
                       ),
-                      child: const Column(
+                      child: Column(
                         children: [
                           Text(
                             'Additional Information',
-                            style: TextStyle(
+                            style: GoogleFonts.raleway(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: Colors.teal,
+                              color: const Color(0xFF6366F1),
                             ),
                           ),
-                          SizedBox(height: 8),
+                          const SizedBox(height: 8),
                           Text(
                             'I am passionate about mobile app development and love creating beautiful, functional user interfaces. When I\'m not coding, you can find me exploring new technologies, reading tech blogs, or playing video games.',
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 14),
+                            style: GoogleFonts.raleway(
+                              fontSize: 14,
+                              height: 1.4,
+                            ),
                           ),
                         ],
                       ),
@@ -417,15 +676,16 @@ class _AboutMePageState extends State<AboutMePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(Icons.star, color: Colors.teal),
-                      SizedBox(width: 8),
+                      const Icon(Icons.star, color: Color(0xFFEC4899)), // Pink
+                      const SizedBox(width: 8),
                       Text(
                         'Skills & Interests',
-                        style: TextStyle(
+                        style: GoogleFonts.raleway(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          color: const Color(0xFF6366F1),
                         ),
                       ),
                     ],
@@ -462,15 +722,16 @@ class _AboutMePageState extends State<AboutMePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(Icons.school, color: Colors.teal),
-                      SizedBox(width: 8),
+                      const Icon(Icons.school, color: Color(0xFF8B5CF6)), // Violet
+                      const SizedBox(width: 8),
                       Text(
                         'Education',
-                        style: TextStyle(
+                        style: GoogleFonts.raleway(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          color: const Color(0xFF6366F1),
                         ),
                       ),
                     ],
@@ -502,15 +763,16 @@ class _AboutMePageState extends State<AboutMePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(Icons.contact_mail, color: Colors.teal),
-                      SizedBox(width: 8),
+                      const Icon(Icons.contact_mail, color: Color(0xFF6366F1)),
+                      const SizedBox(width: 8),
                       Text(
                         'Contact Information',
-                        style: TextStyle(
+                        style: GoogleFonts.raleway(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          color: const Color(0xFF6366F1),
                         ),
                       ),
                     ],
@@ -549,15 +811,16 @@ class _AboutMePageState extends State<AboutMePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(Icons.share, color: Colors.teal),
-                      SizedBox(width: 8),
+                      const Icon(Icons.share, color: Color(0xFFEC4899)), // Pink
+                      const SizedBox(width: 8),
                       Text(
                         'Social Media',
-                        style: TextStyle(
+                        style: GoogleFonts.raleway(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          color: const Color(0xFF6366F1),
                         ),
                       ),
                     ],
@@ -605,23 +868,27 @@ class _AboutMePageState extends State<AboutMePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(Icons.message, color: Colors.teal),
-                      SizedBox(width: 8),
+                      const Icon(Icons.message, color: Color(0xFF8B5CF6)), // Violet
+                      const SizedBox(width: 8),
                       Text(
                         'Send Me a Message',
-                        style: TextStyle(
+                        style: GoogleFonts.raleway(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          color: const Color(0xFF6366F1),
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 16),
-                  const Text(
+                  Text(
                     'Feel free to reach out if you have any questions, want to collaborate on a project, or just want to say hello!',
-                    style: TextStyle(fontSize: 16),
+                    style: GoogleFonts.raleway(
+                      fontSize: 16,
+                      height: 1.5,
+                    ),
                   ),
                   const SizedBox(height: 16),
                   SizedBox(
@@ -636,7 +903,12 @@ class _AboutMePageState extends State<AboutMePage> {
                         );
                       },
                       icon: const Icon(Icons.send),
-                      label: const Text('Send Email'),
+                      label: Text(
+                        'Send Email',
+                        style: GoogleFonts.raleway(
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.teal,
                         foregroundColor: Colors.white,
@@ -659,24 +931,36 @@ class _AboutMePageState extends State<AboutMePage> {
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Colors.teal.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(12),
+            gradient: LinearGradient(
+              colors: [
+                const Color(0xFF6366F1).withOpacity(0.1),
+                const Color(0xFF8B5CF6).withOpacity(0.1),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: const Color(0xFF6366F1).withOpacity(0.2),
+              width: 1,
+            ),
           ),
           child: Text(
             value,
-            style: const TextStyle(
+            style: GoogleFonts.raleway(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: Colors.teal,
+              color: const Color(0xFF6366F1),
             ),
           ),
         ),
         const SizedBox(height: 8),
         Text(
           label,
-          style: const TextStyle(
+          style: GoogleFonts.raleway(
             fontSize: 14,
-            color: Colors.grey,
+            color: const Color(0xFF64748B), // Slate-500
+            fontWeight: FontWeight.w500,
           ),
         ),
       ],
@@ -703,14 +987,14 @@ class _AboutMePageState extends State<AboutMePage> {
               children: [
                 Text(
                   label,
-                  style: const TextStyle(
+                  style: GoogleFonts.raleway(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
                   value,
-                  style: const TextStyle(
+                  style: GoogleFonts.raleway(
                     fontSize: 14,
                     color: Colors.grey,
                   ),
@@ -745,14 +1029,16 @@ class _AboutMePageState extends State<AboutMePage> {
           children: [
             Text(
               platform,
-              style: const TextStyle(
+              style: GoogleFonts.raleway(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               subtitle,
-              style: const TextStyle(fontSize: 12),
+              style: GoogleFonts.raleway(
+                fontSize: 12,
+              ),
             ),
           ],
         ),
@@ -771,13 +1057,14 @@ class _AboutMePageState extends State<AboutMePage> {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         children: [
-          Icon(icon, color: Colors.teal, size: 20),
+          Icon(icon, color: const Color(0xFF8B5CF6), size: 20), // Violet accent
           const SizedBox(width: 12),
-          Expanded(
-            child: Text(
-              '$label: $value',
-              style: const TextStyle(fontSize: 16),
+          Expanded(          child: Text(
+            '$label: $value',
+            style: GoogleFonts.raleway(
+              fontSize: 16,
             ),
+          ),
           ),
         ],
       ),
@@ -928,12 +1215,12 @@ class _AnimatedSkillChipState extends State<_AnimatedSkillChip>
                   boxShadow: _isHovered
                       ? [
                           BoxShadow(
-                            color: Colors.teal.withOpacity(0.4),
+                            color: const Color(0xFF6366F1).withOpacity(0.4),
                             blurRadius: 8,
                             offset: const Offset(0, 4),
                           ),
                           BoxShadow(
-                            color: Colors.teal.withOpacity(0.1),
+                            color: const Color(0xFF8B5CF6).withOpacity(0.2),
                             blurRadius: 15,
                             offset: const Offset(0, 8),
                           ),
@@ -959,16 +1246,16 @@ class _AnimatedSkillChipState extends State<_AnimatedSkillChip>
                         gradient: _isHovered
                             ? LinearGradient(
                                 colors: [
-                                  Colors.teal.withOpacity(0.3),
-                                  Colors.teal.withOpacity(0.5),
+                                  const Color(0xFF6366F1).withOpacity(0.3),
+                                  const Color(0xFF8B5CF6).withOpacity(0.4),
                                 ],
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
                               )
                             : LinearGradient(
                                 colors: [
-                                  Colors.teal.withOpacity(0.15),
-                                  Colors.teal.withOpacity(0.25),
+                                  const Color(0xFF6366F1).withOpacity(0.1),
+                                  const Color(0xFF8B5CF6).withOpacity(0.15),
                                 ],
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
@@ -976,8 +1263,8 @@ class _AnimatedSkillChipState extends State<_AnimatedSkillChip>
                         borderRadius: BorderRadius.circular(25),
                         border: Border.all(
                           color: _isHovered
-                              ? Colors.teal.withOpacity(0.8)
-                              : Colors.teal.withOpacity(0.4),
+                              ? const Color(0xFF6366F1).withOpacity(0.8)
+                              : const Color(0xFF6366F1).withOpacity(0.4),
                           width: _isHovered ? 2 : 1,
                         ),
                       ),
@@ -988,14 +1275,14 @@ class _AnimatedSkillChipState extends State<_AnimatedSkillChip>
                             Icon(
                               Icons.code,
                               size: 16,
-                              color: Colors.teal[700],
+                              color: const Color(0xFF8B5CF6), // Violet
                             ),
                             const SizedBox(width: 6),
                           ],
                           Text(
                             widget.skill,
-                            style: TextStyle(
-                              color: _isHovered ? Colors.teal[800] : Colors.teal[700],
+                            style: GoogleFonts.raleway(
+                              color: _isHovered ? const Color(0xFF4338CA) : const Color(0xFF6366F1), // Indigo shades
                               fontWeight: _isHovered ? FontWeight.w700 : FontWeight.w600,
                               fontSize: _isHovered ? 14 : 13,
                             ),
