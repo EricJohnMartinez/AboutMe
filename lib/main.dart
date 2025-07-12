@@ -427,7 +427,7 @@ class _AboutMePageState extends State<AboutMePage> {
                 Text(
                   'Vinz Kiro J. Masangkay',
                   style: GoogleFonts.raleway(
-                    fontSize: 28,
+                    fontSize: 26,
                     fontWeight: FontWeight.bold,
                     color: const Color(0xFF6366F1),
                     letterSpacing: 1.2,
@@ -1356,7 +1356,7 @@ class _ContactFormCardState extends State<_ContactFormCard> {
                       const Icon(Icons.contact_mail, color: Colors.white),
                       const SizedBox(width: 8),
                       Text(
-                        'Contact Us',
+                        'Contact Me',
                         style: GoogleFonts.raleway(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -1565,8 +1565,7 @@ class _ContactFormCardState extends State<_ContactFormCard> {
               ),
             ],
           ),
-        ),
-      ),
+        ),      ),
     );
   }
 }
