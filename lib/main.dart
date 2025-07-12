@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(const AboutMe_Martinez());
+  runApp(const AboutMe_Masangkay());
 }
 
-class AboutMe_Martinez extends StatelessWidget {
-  const AboutMe_Martinez({super.key});
+class AboutMe_Masangkay extends StatelessWidget {
+  const AboutMe_Masangkay({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Eric John C. Martinez - About Me',
+      title: 'Vinz Kiro J. Masangkay - About Me',
       theme: ThemeData(
         // Modern aesthetic color scheme - Purple to Pink gradient theme
         colorScheme: ColorScheme.fromSeed(
@@ -270,7 +270,7 @@ class _AboutMePageState extends State<AboutMePage> {
                 children: [
                   const CircleAvatar(
                     radius: 30,
-                    backgroundImage: AssetImage('assets/images/profile.JPG'),
+                    backgroundImage: AssetImage('assets/images/me.JPG'),
                   ),
                   const SizedBox(height: 10),
                   Text(
@@ -358,13 +358,13 @@ class _AboutMePageState extends State<AboutMePage> {
   String _getAppBarTitle() {
     switch (_currentIndex) {
       case 0:
-        return 'Eric John C. Martinez';
+        return 'Vinz Kiro J. Masangkay';
       case 1:
         return 'About Me';
       case 2:
         return 'Contact';
       default:
-        return 'Eric John C. Martinez';
+        return 'Vinz Kiro J. Masangkay';
     }
   }
 
@@ -418,14 +418,14 @@ class _AboutMePageState extends State<AboutMePage> {
                       ),
                     ],
                     image: const DecorationImage(
-                      image: AssetImage('assets/images/profile.JPG'),
+                      image: AssetImage('assets/images/me.JPG'),
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  'Eric John C. Martinez',
+                  'Vinz Kiro J. Masangkay',
                   style: GoogleFonts.raleway(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
@@ -435,7 +435,7 @@ class _AboutMePageState extends State<AboutMePage> {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Software Engineer',
+                  'IT Student',
                   style: GoogleFonts.raleway(
                     fontSize: 16,
                     color: const Color(0xFF64748B), // Updated to slate-500
@@ -474,7 +474,7 @@ class _AboutMePageState extends State<AboutMePage> {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      'Hello! I\'m Eric John, a passionate Software Engineer and Information Technology Graduate. I love creating beautiful web and mobile applications and exploring new technologies.',
+                      'Hello! I\'m Vinz Kiro, a passionate Information Technology Student. I love exploring beautiful web and mobile applications and learning new technologies.',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.raleway(
                         fontSize: 16,
@@ -532,7 +532,7 @@ class _AboutMePageState extends State<AboutMePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        _buildStatItem('27', 'Years Old'),
+                        _buildStatItem('21', 'Years Old'),
                         _buildStatItem('IT', 'Student'),
                         _buildStatItem('Web/Mobile', 'Developer'),
                       ],
@@ -576,10 +576,10 @@ class _AboutMePageState extends State<AboutMePage> {
                     ],
                   ),
                   const SizedBox(height: 16),
-                  _buildInfoRow(Icons.cake, 'Age', '27 years old'),
+                  _buildInfoRow(Icons.cake, 'Age', '21 years old'),
                   _buildInfoRow(Icons.school, 'Course', 'Information Technology'),
                   _buildInfoRow(Icons.sports_esports, 'Hobbies', 'Coding, Reading, Gaming'),
-                  _buildInfoRow(Icons.location_on, 'Location', 'Calapan City, Oriental Mindoro'),
+                  _buildInfoRow(Icons.location_on, 'Location', 'San Teodoro, Oriental Mindoro'),
                 ],
               ),
             ),
@@ -650,7 +650,7 @@ class _AboutMePageState extends State<AboutMePage> {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            'I am passionate about mobile app development and love creating beautiful, functional user interfaces. When I\'m not coding, you can find me exploring new technologies, reading tech blogs, or playing video games.',
+                            'I am eager to learn about mobile app development and love creating beautiful, functional user interfaces. When I\'m not coding, you can find me exploring new technologies, reading tech blogs, or playing video games.',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.raleway(
                               fontSize: 14,
@@ -738,7 +738,7 @@ class _AboutMePageState extends State<AboutMePage> {
                   ),
                   const SizedBox(height: 16),
                   _buildInfoRow(Icons.book, 'Degree', 'Bachelor of Science in Information Technology'),
-                  _buildInfoRow(Icons.calendar_today, 'Year', '2022-2023'),
+                  _buildInfoRow(Icons.calendar_today, 'Year', '2025-2026'),
                   _buildInfoRow(Icons.grade, 'Focus', 'Web/Mobile App Development'),
                 ],
               ),
@@ -781,7 +781,7 @@ class _AboutMePageState extends State<AboutMePage> {
                   _buildContactItem(
                     Icons.email,
                     'Email',
-                    'eric.martinez@example.com',
+                    'vinz.masangkay@example.com',
                     Colors.red,
                   ),
                   _buildContactItem(
@@ -793,7 +793,7 @@ class _AboutMePageState extends State<AboutMePage> {
                   _buildContactItem(
                     Icons.location_on,
                     'Location',
-                    'Calapan City, Oriental Mindoro',
+                    'San Teodoro, Oriental Mindoro',
                     Colors.blue,
                   ),
                 ],
